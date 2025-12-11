@@ -122,12 +122,12 @@
       background: linear-gradient(to bottom, #020617, #111827);
     }
 
-    /* 검은 건반 위치 (C4~C5 1옥타브 기준) */
-    .key.black[data-note="C#4"] { left: calc(100% / 7 * 0.5); }
-    .key.black[data-note="D#4"] { left: calc(100% / 7 * 1.5); }
-    .key.black[data-note="F#4"] { left: calc(100% / 7 * 3.5); }
-    .key.black[data-note="G#4"] { left: calc(100% / 7 * 4.5); }
-    .key.black[data-note="A#4"] { left: calc(100% / 7 * 5.5); }
+    /* ✅ 중앙 정렬된 검은 건반 위치 (C4~C5 1옥타브) */
+    .key.black[data-note="C#4"] { left: calc(100% / 7 * 0.75); } /* 도~레 사이 */
+    .key.black[data-note="D#4"] { left: calc(100% / 7 * 1.75); } /* 레~미 사이 */
+    .key.black[data-note="F#4"] { left: calc(100% / 7 * 3.75); } /* 파~솔 사이 */
+    .key.black[data-note="G#4"] { left: calc(100% / 7 * 4.75); } /* 솔~라 사이 */
+    .key.black[data-note="A#4"] { left: calc(100% / 7 * 5.75); } /* 라~시 사이 */
 
     @media (max-width: 640px) {
       .piano-wrapper {
@@ -175,13 +175,27 @@
   </div>
 
   <script>
-    // Web Audio 초기화
+    // ===========================
+    // Web Audio + 모바일 언락 처리
+    // ===========================
     let audioCtx;
+    let audioUnlocked = false;
+
     function getAudioCtx() {
       if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const AC = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AC();
       }
       return audioCtx;
+    }
+
+    // 모바일에서 첫 터치 때 오디오 잠금 해제
+    function unlockAudio() {
+      const ctx = getAudioCtx();
+      if (ctx.state === "suspended") {
+        ctx.resume();
+      }
+      audioUnlocked = true;
     }
 
     // 음계 주파수 (C4 ~ C5)
@@ -209,7 +223,7 @@
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
 
-      osc.type = "sine"; // 필요하면 'triangle', 'square' 등으로 변경 가능
+      osc.type = "sine";
       osc.frequency.setValueAtTime(freq, ctx.currentTime);
 
       gain.gain.setValueAtTime(0, ctx.currentTime);
@@ -222,7 +236,6 @@
       osc.start();
       osc.stop(ctx.currentTime + 0.6);
 
-      // 키 하이라이트
       if (keyEl) {
         keyEl.classList.add("active");
         setTimeout(() => keyEl.classList.remove("active"), 120);
@@ -231,18 +244,30 @@
 
     function setupKeys() {
       const keys = document.querySelectorAll(".key");
-      keys.forEach(key => {
+
+      const startHandler = (key, note) => (e) => {
+        e.preventDefault();
+        if (!audioUnlocked) {
+          unlockAudio();
+        }
+        playNote(note, key);
+      };
+
+      keys.forEach((key) => {
         const note = key.dataset.note;
-
-        const start = (e) => {
-          e.preventDefault();
-          playNote(note, key);
-        };
-
-        key.addEventListener("mousedown", start);
-        key.addEventListener("touchstart", start, { passive: false });
+        key.addEventListener("mousedown", startHandler(key, note));
+        key.addEventListener("touchstart", startHandler(key, note), { passive: false });
       });
     }
+
+    // 혹시 몰라서 전체 문서에도 한 번 더 언락 훅을 걸어둠
+    window.addEventListener("touchstart", () => {
+      if (!audioUnlocked) unlockAudio();
+    }, { passive: true });
+
+    window.addEventListener("mousedown", () => {
+      if (!audioUnlocked) unlockAudio();
+    });
 
     window.addEventListener("load", setupKeys);
   </script>
