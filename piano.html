@@ -123,13 +123,12 @@
       background: linear-gradient(to bottom, #020617, #111827);
     }
 
-/* 검은 건반 위치 (C4~C5, 하얀 건반 8개 기준) */
-.key.black[data-note="C#4"] { left: calc(100% / 8 * 0.75); }  /* C와 D 사이 */
-.key.black[data-note="D#4"] { left: calc(100% / 8 * 1.75); }  /* D와 E 사이 */
-.key.black[data-note="F#4"] { left: calc(100% / 8 * 3.75); }  /* F와 G 사이 */
-.key.black[data-note="G#4"] { left: calc(100% / 8 * 4.75); }  /* G와 A 사이 */
-.key.black[data-note="A#4"] { left: calc(100% / 8 * 5.75); }  /* A와 B 사이 */
-
+    /* 검은 건반 위치 (C4~C5, 하얀 건반 8개 기준) */
+    .key.black[data-note="C#4"] { left: calc(100% / 8 * 0.75); }  /* C와 D 사이 */
+    .key.black[data-note="D#4"] { left: calc(100% / 8 * 1.75); }  /* D와 E 사이 */
+    .key.black[data-note="F#4"] { left: calc(100% / 8 * 3.75); }  /* F와 G 사이 */
+    .key.black[data-note="G#4"] { left: calc(100% / 8 * 4.75); }  /* G와 A 사이 */
+    .key.black[data-note="A#4"] { left: calc(100% / 8 * 5.75); }  /* A와 B 사이 */
 
     @media (max-width: 640px) {
       .piano-wrapper {
@@ -177,28 +176,38 @@
   </div>
 
   <script>
-    // Web Audio 컨텍스트
-    let audioCtx = null;
+    // === Web Audio 컨텍스트 (옛 iOS까지 고려해서 ES5 문법으로 작성) ===
+    var audioCtx = null;
 
     function ensureAudioContext() {
       if (!audioCtx) {
-        const AC = window.AudioContext || window.webkitAudioContext;
+        var AC = window.AudioContext || window.webkitAudioContext;
         if (!AC) {
           alert("이 브라우저에서는 오디오를 지원하지 않습니다.");
           return null;
         }
         audioCtx = new AC();
       }
-
-      if (audioCtx.state === "suspended") {
-        // iOS에서 사용자 제스처 안에서 resume 호출
-        audioCtx.resume();
-      }
       return audioCtx;
     }
 
+    // 최초 한 번 아무 곳이나 터치/클릭할 때 AudioContext 깨우기
+    function setupAudioUnlock() {
+      function unlock() {
+        var ctx = ensureAudioContext();
+        if (ctx && ctx.state === "suspended" && ctx.resume) {
+          ctx.resume();
+        }
+        document.removeEventListener("touchstart", unlock, false);
+        document.removeEventListener("mousedown", unlock, false);
+      }
+
+      document.addEventListener("touchstart", unlock, false);
+      document.addEventListener("mousedown", unlock, false);
+    }
+
     // 음계 주파수 (C4 ~ C5)
-    const freqs = {
+    var freqs = {
       "C4": 261.63,
       "C#4": 277.18,
       "D4": 293.66,
@@ -215,14 +224,19 @@
     };
 
     function playNote(note, keyEl) {
-      const ctx = ensureAudioContext();
+      var ctx = ensureAudioContext();
       if (!ctx) return;
 
-      const freq = freqs[note];
+      // iOS에서 가끔 suspended 상태라면 한 번 더 깨우기
+      if (ctx.state === "suspended" && ctx.resume) {
+        ctx.resume();
+      }
+
+      var freq = freqs[note];
       if (!freq) return;
 
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
 
       osc.type = "sine";
       osc.frequency.setValueAtTime(freq, ctx.currentTime);
@@ -239,26 +253,29 @@
 
       if (keyEl) {
         keyEl.classList.add("active");
-        setTimeout(() => keyEl.classList.remove("active"), 120);
+        setTimeout(function () {
+          keyEl.classList.remove("active");
+        }, 120);
       }
     }
 
     function setupKeys() {
-      const keys = document.querySelectorAll(".key");
-      keys.forEach(key => {
-        const note = key.dataset.note;
+      var keys = document.querySelectorAll(".key");
+      Array.prototype.forEach.call(keys, function (key) {
+        var note = key.getAttribute("data-note");
 
-        const start = (e) => {
-          e.preventDefault();
+        function start(e) {
+          if (e && e.preventDefault) e.preventDefault();
           playNote(note, key);
-        };
+        }
 
-        key.addEventListener("mousedown", start);
-        key.addEventListener("touchstart", start, { passive: false });
+        key.addEventListener("mousedown", start, false);
+        key.addEventListener("touchstart", start, false);
       });
     }
 
-    window.addEventListener("load", () => {
+    window.addEventListener("load", function () {
+      setupAudioUnlock();
       setupKeys();
     });
   </script>
