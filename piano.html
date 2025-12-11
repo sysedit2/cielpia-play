@@ -24,6 +24,7 @@
       padding: 18px 18px 26px;
       box-shadow: 0 16px 40px rgba(15, 23, 42, 0.16);
       border: 1px solid #e5e7eb;
+      position: relative;
     }
 
     .piano-header {
@@ -101,7 +102,7 @@
       right: 0;
       top: 12px;
       height: 95px;
-      pointer-events: none; /* 컨테이너는 클릭 막고 키만 허용 */
+      pointer-events: none;
     }
 
     .key.black {
@@ -122,12 +123,48 @@
       background: linear-gradient(to bottom, #020617, #111827);
     }
 
-    /* ✅ 중앙 정렬된 검은 건반 위치 (C4~C5 1옥타브) */
-    .key.black[data-note="C#4"] { left: calc(100% / 7 * 0.75); } /* 도~레 사이 */
-    .key.black[data-note="D#4"] { left: calc(100% / 7 * 1.75); } /* 레~미 사이 */
-    .key.black[data-note="F#4"] { left: calc(100% / 7 * 3.75); } /* 파~솔 사이 */
-    .key.black[data-note="G#4"] { left: calc(100% / 7 * 4.75); } /* 솔~라 사이 */
-    .key.black[data-note="A#4"] { left: calc(100% / 7 * 5.75); } /* 라~시 사이 */
+    /* 검은 건반 위치 (C4~C5 1옥타브 기준) */
+    .key.black[data-note="C#4"] { left: calc(100% / 7 * 0.5); }
+    .key.black[data-note="D#4"] { left: calc(100% / 7 * 1.5); }
+    .key.black[data-note="F#4"] { left: calc(100% / 7 * 3.5); }
+    .key.black[data-note="G#4"] { left: calc(100% / 7 * 4.5); }
+    .key.black[data-note="A#4"] { left: calc(100% / 7 * 5.5); }
+
+    /* 모바일/아이패드용 오디오 언락 버튼 */
+    .audio-unlock {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.72);
+      color: #f9fafb;
+      border-radius: 16px;
+      z-index: 10;
+    }
+
+    .audio-unlock.hidden {
+      display: none;
+    }
+
+    .audio-unlock button {
+      border: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      background: #22c55e;
+      color: white;
+      cursor: pointer;
+      margin-bottom: 6px;
+    }
+
+    .audio-unlock p {
+      margin: 0;
+      font-size: 12px;
+      opacity: 0.9;
+    }
 
     @media (max-width: 640px) {
       .piano-wrapper {
@@ -147,6 +184,12 @@
 </head>
 <body>
   <div class="piano-wrapper">
+    <!-- 모바일 오디오 언락 레이어 -->
+    <div class="audio-unlock" id="audioUnlock">
+      <button id="audioUnlockBtn">피아노 시작하기</button>
+      <p>한 번 눌러야 소리가 나요 (모바일 필수)</p>
+    </div>
+
     <div class="piano-header">
       <div class="piano-title">온라인 피아노</div>
       <div class="piano-sub">건반을 클릭하거나 터치해서 소리를 들어보세요.</div>
@@ -175,27 +218,27 @@
   </div>
 
   <script>
-    // ===========================
-    // Web Audio + 모바일 언락 처리
-    // ===========================
+    // Web Audio 초기화
     let audioCtx;
-    let audioUnlocked = false;
-
     function getAudioCtx() {
       if (!audioCtx) {
-        const AC = window.AudioContext || window.webkitAudioContext;
-        audioCtx = new AC();
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       }
       return audioCtx;
     }
 
-    // 모바일에서 첫 터치 때 오디오 잠금 해제
-    function unlockAudio() {
+    // 모바일에서 한 번 눌러서 오디오 언락
+    async function unlockAudio() {
       const ctx = getAudioCtx();
-      if (ctx.state === "suspended") {
-        ctx.resume();
+      try {
+        if (ctx.state === "suspended") {
+          await ctx.resume();
+        }
+      } catch (e) {
+        console.warn("audio unlock error", e);
       }
-      audioUnlocked = true;
+      const layer = document.getElementById("audioUnlock");
+      if (layer) layer.classList.add("hidden");
     }
 
     // 음계 주파수 (C4 ~ C5)
@@ -217,6 +260,11 @@
 
     function playNote(note, keyEl) {
       const ctx = getAudioCtx();
+      // 혹시 아직도 suspended이면 한 번 더 resume 시도
+      if (ctx.state === "suspended") {
+        ctx.resume();
+      }
+
       const freq = freqs[note];
       if (!freq) return;
 
@@ -244,32 +292,26 @@
 
     function setupKeys() {
       const keys = document.querySelectorAll(".key");
-
-      const startHandler = (key, note) => (e) => {
-        e.preventDefault();
-        if (!audioUnlocked) {
-          unlockAudio();
-        }
-        playNote(note, key);
-      };
-
-      keys.forEach((key) => {
+      keys.forEach(key => {
         const note = key.dataset.note;
-        key.addEventListener("mousedown", startHandler(key, note));
-        key.addEventListener("touchstart", startHandler(key, note), { passive: false });
+
+        const start = (e) => {
+          e.preventDefault();
+          playNote(note, key);
+        };
+
+        key.addEventListener("mousedown", start);
+        key.addEventListener("touchstart", start, { passive: false });
       });
     }
 
-    // 혹시 몰라서 전체 문서에도 한 번 더 언락 훅을 걸어둠
-    window.addEventListener("touchstart", () => {
-      if (!audioUnlocked) unlockAudio();
-    }, { passive: true });
-
-    window.addEventListener("mousedown", () => {
-      if (!audioUnlocked) unlockAudio();
+    window.addEventListener("load", () => {
+      setupKeys();
+      const btn = document.getElementById("audioUnlockBtn");
+      if (btn) {
+        btn.addEventListener("click", unlockAudio);
+      }
     });
-
-    window.addEventListener("load", setupKeys);
   </script>
 </body>
 </html>
