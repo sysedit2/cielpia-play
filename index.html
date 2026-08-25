@@ -97,13 +97,18 @@
   }
   .card-link{
     display:block;
-    border-radius:22px;
+    border-radius:20px;
     overflow:hidden;
-    box-shadow:0 4px 18px rgba(20,40,70,.08);
-    transition:transform .25s ease, box-shadow .25s ease;
+    transition:transform .25s ease, filter .25s ease;
+    filter:drop-shadow(0 4px 14px rgba(20,40,70,.10));
   }
-  .card-link:hover{transform:translateY(-6px); box-shadow:0 14px 28px rgba(20,40,70,.14);}
-  .card-link img{width:100%; height:auto;}
+  .card-link:hover{transform:translateY(-6px); filter:drop-shadow(0 12px 24px rgba(20,40,70,.16));}
+  .card-link img{
+    display:block;
+    width:100%;
+    aspect-ratio:560/830;
+    object-fit:cover;
+  }
 
   footer{
     padding:28px 0 40px;
@@ -149,11 +154,11 @@
 <section class="programs">
   <div class="wrap">
     <div class="cards">
-      <a class="card-link"><img src="card-momo-terry.jpg" alt="모모&테리 - 몬테소리 원리를 기반으로 한 만1세, 만2세 통합 교육 프로그램" width="182" height="272"></a>
-      <a class="card-link"><img src="card-cielpia.jpg" alt="씨엘피아 - 발달 단계에 맞춘 체계적인 몬테소리 통합 커리큘럼" width="184" height="272"></a>
-      <a class="card-link"><img src="card-global-leader.jpg" alt="글로벌리더 - 글로벌 역량을 키우는 영어 통합 학습 프로그램" width="183" height="272"></a>
-      <a class="card-link"><img src="card-explorer.jpg" alt="탐험가 프로그램 - 탐구와 경험을 통해 세상을 배우는 놀이 중심 탐험 프로그램" width="183" height="272"></a>
-      <a class="card-link"><img src="card-yumyum.jpg" alt="얌얌 - 건강한 식습관과 생활 습관을 위한 영양·건강 교육 프로그램" width="191" height="272"></a>
+      <a class="card-link"><img src="card-momo-terry.webp" alt="모모&테리 - 몬테소리 원리를 기반으로 한 만1세, 만2세 통합 교육 프로그램"></a>
+      <a class="card-link"><img src="card-cielpia.webp" alt="씨엘피아 - 발달 단계에 맞춘 체계적인 몬테소리 통합 커리큘럼"></a>
+      <a class="card-link"><img src="card-global-leader.webp" alt="글로벌리더 - 글로벌 역량을 키우는 영어 통합 학습 프로그램"></a>
+      <a class="card-link"><img src="card-explorer.webp" alt="탐험가 프로그램 - 탐구와 경험을 통해 세상을 배우는 놀이 중심 탐험 프로그램"></a>
+      <a class="card-link"><img src="card-yumyum.webp" alt="얌얌 - 건강한 식습관과 생활 습관을 위한 영양·건강 교육 프로그램"></a>
     </div>
   </div>
 </section>
