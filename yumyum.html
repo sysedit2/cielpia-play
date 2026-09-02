@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>얌얌 | 음식을 먹는 즐거움을 담은 정서 친화 동화책</title>
+<meta name="description" content="얌얌 시리즈는 '음식을 먹는 즐거움'을 대주제로 만 3세부터 5세까지 각 성장 발달 과정의 식생활 고민을 건강하게 풀어나가는 정서 친화 동화책 프로그램입니다.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<style>
+  :root{
+    --navy:#1c2b4a;
+    --ink:#5a3a22;
+    --orange:#f0872f;
+    --orange-deep:#d96a15;
+    --yellow:#f7c94b;
+    --gray-600:#6b7684;
+    --gray-400:#9aa3b0;
+    --cream:#fdf6e9;
+    --cream-soft:#fffcf5;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+    color:var(--navy);
+    background:#fff;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    word-break:keep-all;
+  }
+  img{display:block; max-width:100%;}
+  a{text-decoration:none; color:inherit;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 48px;}
+
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    border-bottom:1px solid #f2ece1;
+    background:#fff;
+    position:sticky; top:0; z-index:20;
+  }
+  .topbar .wrap{
+    height:64px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .topbar img{height:34px; width:auto;}
+  .back{
+    font-size:14.5px; font-weight:600;
+    color:var(--gray-600);
+    padding:8px 14px; border-radius:999px;
+    transition:background .2s ease, color .2s ease;
+  }
+  .back:hover{background:#fdf0e0; color:var(--orange-deep);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background-image:url('ym-bg.webp');
+    background-size:cover;
+    background-position:center bottom;
+    background-color:var(--cream);
+    padding:76px 0 190px;
+  }
+  .hero-inner{
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  .age-pill{
+    display:inline-block;
+    font-size:14px; font-weight:700; color:#fff;
+    background:var(--orange);
+    padding:8px 20px; border-radius:999px;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(24px,3vw,34px);
+    font-weight:800;
+    line-height:1.5;
+    letter-spacing:-0.7px;
+    color:var(--ink);
+    margin-bottom:20px;
+  }
+  .hero h1 b{color:var(--orange-deep); font-weight:800;}
+  .hero-lead{
+    font-size:clamp(15.5px,1.3vw,17.5px);
+    line-height:1.9;
+    color:#6a5a4a;
+  }
+  .hero-logo img{width:100%; height:auto;}
+
+  /* ---------- BOOKS ---------- */
+  .books-band{background:var(--cream-soft); padding:78px 0 90px;}
+  .section-head{text-align:center; margin-bottom:48px;}
+  .section-title{
+    font-size:clamp(23px,2.6vw,32px);
+    font-weight:800;
+    letter-spacing:-0.6px;
+    margin-bottom:12px;
+  }
+  .section-title em{font-style:normal; color:var(--orange-deep);}
+  .section-sub{
+    font-size:clamp(15px,1.2vw,17px);
+    line-height:1.8; color:var(--gray-600);
+  }
+  .book-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:34px;
+    max-width:900px; margin:0 auto;
+  }
+  .book{text-align:center;}
+  .book-cover{
+    display:flex; align-items:flex-end; justify-content:center;
+    margin-bottom:20px;
+  }
+  .book-cover img{
+    width:100%; height:auto;
+    filter:drop-shadow(0 14px 24px rgba(90,58,34,.20));
+    transition:transform .25s ease;
+  }
+  .book:hover .book-cover img{transform:translateY(-6px);}
+  .book h3{
+    font-size:19px; font-weight:800;
+    color:var(--ink);
+    letter-spacing:-0.3px;
+  }
+
+  footer{
+    padding:28px 0 40px;
+    text-align:center;
+    color:var(--gray-400);
+    font-size:12.5px; font-weight:700;
+    border-top:1px solid #f4efe6;
+  }
+
+  @media (max-width:900px){
+    .wrap{padding:0 24px;}
+    .hero{padding:48px 0 150px;}
+    .hero-inner{grid-template-columns:1fr; gap:28px;}
+    .hero-logo{max-width:360px;}
+    .book-grid{gap:22px;}
+    .book h3{font-size:16px;}
+    .books-band{padding:56px 0 70px;}
+  }
+  @media (max-width:560px){
+    .book-grid{grid-template-columns:1fr; max-width:300px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="/" aria-label="얌얌 홈"><img src="ym-logo.webp" alt="얌얌"></a>
+    <a class="back" href="/">← 프로그램 전체보기</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="age-pill">만3세 · 만4세 · 만5세</span>
+      <h1><b>얌얌</b>은 ‘음식’을 먹는 즐거움을<br>주제로 한 동화책 시리즈입니다.</h1>
+      <p class="hero-lead">
+        얌얌 시리즈는 ‘음식을 먹는 즐거움’을 대주제로 만 3세부터 5세까지
+        각 성장 발달 과정의 식생활 고민을 건강하게 풀어나가는
+        정서 친화 동화책 프로그램입니다.
+      </p>
+    </div>
+    <div class="hero-logo">
+      <img src="ym-logo.webp" alt="얌얌" width="620" height="382">
+    </div>
+  </div>
+</section>
+
+<section class="books-band">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">귀여운 캐릭터와 <em>따뜻한 이야기</em></h2>
+      <p class="section-sub">아이들이 음식과 식사 시간을 좋아하게 도와줍니다.</p>
+    </div>
+    <div class="book-grid">
+      <article class="book">
+        <div class="book-cover">
+          <img src="ym-book1.webp" alt="동화책 표지 - 날 따라해봐요 치카치카" width="620" height="728">
+        </div>
+        <h3>날 따라해봐요 치카치카</h3>
+      </article>
+      <article class="book">
+        <div class="book-cover">
+          <img src="ym-book2.webp" alt="동화책 표지 - 다섯 친구들" width="620" height="725">
+        </div>
+        <h3>다섯 친구들</h3>
+      </article>
+      <article class="book">
+        <div class="book-cover">
+          <img src="ym-book3.webp" alt="동화책 표지 - 건강한 음식이 최고야!" width="620" height="741">
+        </div>
+        <h3>건강한 음식이 최고야!</h3>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 CIELPIA. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
