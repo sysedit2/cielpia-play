@@ -107,6 +107,23 @@
     filter:drop-shadow(0 14px 30px rgba(60,60,30,.16));
   }
 
+  /* ---------- VIDEO ---------- */
+  .video{padding:64px 0 8px;}
+  .video-frame{
+    max-width:920px;
+    margin:0 auto;
+    aspect-ratio:16/9;
+    border-radius:20px;
+    overflow:hidden;
+    background:#000;
+    box-shadow:0 10px 34px rgba(20,40,70,.14);
+  }
+  .video-frame iframe{
+    display:block;
+    width:100%; height:100%;
+    border:0;
+  }
+
   /* ---------- SECTIONS ---------- */
   section.block{padding:78px 0;}
   .section-head{text-align:center; margin-bottom:44px;}
@@ -241,6 +258,19 @@
     </div>
     <div class="hero-visual">
       <img src="gl-books.webp" alt="나라별 글로벌리더 교재 세트" width="900" height="692">
+    </div>
+  </div>
+</section>
+
+<section class="video">
+  <div class="wrap">
+    <div class="video-frame">
+      <iframe
+        src="https://player.vimeo.com/video/1223385308?h=57517f902a"
+        title="글로벌리더 소개 영상"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
     </div>
   </div>
 </section>
