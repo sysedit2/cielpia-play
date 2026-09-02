@@ -61,10 +61,26 @@
     padding:76px 0 190px;
   }
   .hero-inner{
+    position:relative;
+    z-index:2;
     display:grid;
     grid-template-columns:1.05fr 1fr;
     gap:40px;
     align-items:center;
+  }
+  /* soft halo behind the copy only, so the illustration stays vivid */
+  .hero-copy{position:relative;}
+  .hero-copy::before{
+    content:'';
+    position:absolute;
+    inset:-46px -80px -40px -60px;
+    pointer-events:none;
+    z-index:-1;
+    background:radial-gradient(ellipse 78% 62% at 42% 48%,
+      rgba(253,246,233,.98) 0%,
+      rgba(253,246,233,.94) 52%,
+      rgba(253,246,233,.72) 74%,
+      rgba(253,246,233,0) 100%);
   }
   .age-pill{
     display:inline-block;
@@ -84,8 +100,9 @@
   .hero h1 b{color:var(--orange-deep); font-weight:800;}
   .hero-lead{
     font-size:clamp(15.5px,1.3vw,17.5px);
+    font-weight:500;
     line-height:1.9;
-    color:#6a5a4a;
+    color:#5a4634;
   }
   .hero-logo img{width:100%; height:auto;}
 
@@ -137,6 +154,7 @@
   @media (max-width:900px){
     .wrap{padding:0 24px;}
     .hero{padding:48px 0 150px;}
+    .hero-copy::before{inset:-30px -26px -28px -26px;}
     .hero-inner{grid-template-columns:1fr; gap:28px;}
     .hero-logo{max-width:360px;}
     .book-grid{gap:22px;}
