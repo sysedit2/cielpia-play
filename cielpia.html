@@ -90,6 +90,23 @@
     margin:0 auto;
   }
 
+  /* ---------- VIDEO ---------- */
+  .video{padding:0 0 72px;}
+  .video-frame{
+    max-width:920px;
+    margin:0 auto;
+    aspect-ratio:16/9;
+    border-radius:20px;
+    overflow:hidden;
+    background:#000;
+    box-shadow:0 10px 34px rgba(20,40,70,.14);
+  }
+  .video-frame iframe{
+    display:block;
+    width:100%; height:100%;
+    border:0;
+  }
+
   /* ---------- MATERIALS ---------- */
   .materials{padding:16px 0 100px;}
   .section-head{text-align:center; margin-bottom:48px;}
@@ -200,6 +217,19 @@
       씨엘피아는 몬테소리 교구 원칙과 누리과정을 연계한 프리미엄 영유아 프로그램입니다.<br>
       각 연령별 발달과 개념 형성에 도움이 되는 맞춤형 교구로 구성되어 있습니다.
     </p>
+  </div>
+</section>
+
+<section class="video">
+  <div class="wrap">
+    <div class="video-frame">
+      <iframe
+        src="https://player.vimeo.com/video/1098364716?h=1b35ddba66"
+        title="씨엘피아 소개 영상"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
   </div>
 </section>
 
