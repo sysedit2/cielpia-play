@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>씨엘피아 | 몬테소리 교육 원리를 담은 연령별 맞춤 교구</title>
+<meta name="description" content="씨엘피아는 몬테소리 교구 원칙과 누리과정을 연계한 프리미엄 영유아 프로그램입니다. 각 연령별 발달과 개념 형성에 도움이 되는 맞춤형 교구로 구성되어 있습니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<style>
+  :root{
+    --navy:#1c2b4a;
+    --purple:#7b5ea7;
+    --purple-soft:#f6f3fb;
+    --gray-600:#6b7684;
+    --gray-400:#9aa3b0;
+    --cream:#fffdfa;
+
+    --age3:#00b48d;
+    --age4:#5fc2fe;
+    --age5:#fb7d6c;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Gowun Dodum','Nunito','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+    color:var(--navy);
+    background:#fff;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    word-break:keep-all;
+  }
+  img{display:block; max-width:100%;}
+  a{text-decoration:none; color:inherit;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 48px;}
+
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    border-bottom:1px solid #eef0f4;
+    background:#fff;
+    position:sticky; top:0; z-index:20;
+  }
+  .topbar .wrap{
+    height:64px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .topbar img{height:26px; width:auto;}
+  .back{
+    font-family:'Pretendard',sans-serif;
+    font-size:14.5px; font-weight:600;
+    color:var(--gray-600);
+    padding:8px 14px; border-radius:999px;
+    transition:background .2s ease, color .2s ease;
+  }
+  .back:hover{background:var(--purple-soft); color:var(--purple);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(180deg,var(--cream) 0%, #fff 100%);
+    padding:72px 0 64px;
+    text-align:center;
+  }
+  .age-pill{
+    display:inline-block;
+    font-family:'Pretendard',sans-serif;
+    font-size:14px; font-weight:700; color:#fff;
+    background:var(--purple);
+    padding:8px 20px; border-radius:999px;
+    margin-bottom:28px;
+  }
+  .hero-logo{
+    width:min(340px,72vw);
+    height:auto;
+    margin:0 auto 22px;
+  }
+  .tagline{
+    font-family:'Pretendard',sans-serif;
+    font-size:clamp(22px,3vw,32px);
+    font-weight:800;
+    letter-spacing:-0.6px;
+    margin-bottom:22px;
+  }
+  .intro{
+    font-size:clamp(15.5px,1.3vw,18px);
+    line-height:1.9;
+    color:var(--gray-600);
+    max-width:760px;
+    margin:0 auto;
+  }
+
+  /* ---------- MATERIALS ---------- */
+  .materials{padding:16px 0 100px;}
+  .section-head{text-align:center; margin-bottom:48px;}
+  .section-title{
+    font-family:'Pretendard',sans-serif;
+    font-size:clamp(21px,2.4vw,28px);
+    font-weight:800;
+    letter-spacing:-0.5px;
+    margin-bottom:14px;
+  }
+  .section-sub{
+    font-size:clamp(15px,1.2vw,17px);
+    line-height:1.85;
+    color:var(--gray-600);
+  }
+
+  .age-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  .age-card{
+    border:1px solid #eef0f4;
+    border-radius:22px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 4px 18px rgba(20,40,70,.05);
+    display:flex; flex-direction:column;
+  }
+  .age-head{
+    padding:16px 20px;
+    text-align:center;
+    font-family:'Pretendard',sans-serif;
+    font-size:20px; font-weight:800; color:#fff;
+    letter-spacing:-0.3px;
+  }
+  .age-desc{
+    padding:20px 22px 0;
+    text-align:center;
+    font-size:15px;
+    line-height:1.65;
+    color:var(--navy);
+    min-height:76px;
+  }
+  .age-photo{
+    flex:1;
+    display:flex; align-items:center; justify-content:center;
+    padding:10px 18px 4px;
+  }
+  .age-photo img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:contain;
+  }
+  .tags{
+    display:flex; flex-wrap:wrap; gap:8px; justify-content:center;
+    padding:16px 18px 22px;
+  }
+  .tag{
+    font-family:'Pretendard',sans-serif;
+    font-size:12.5px; font-weight:700;
+    padding:6px 12px; border-radius:999px;
+    white-space:nowrap;
+  }
+
+  .c3 .age-head{background:var(--age3);}
+  .c3 .tag{background:rgba(0,180,141,.10); color:#04815f;}
+  .c4 .age-head{background:var(--age4);}
+  .c4 .tag{background:rgba(95,194,254,.14); color:#1f79b8;}
+  .c5 .age-head{background:var(--age5);}
+  .c5 .tag{background:rgba(251,125,108,.13); color:#cf4b39;}
+
+  footer{
+    padding:28px 0 40px;
+    text-align:center;
+    color:var(--gray-400);
+    font-size:12.5px;
+    font-weight:700;
+    border-top:1px solid #f1f3f6;
+  }
+
+  @media (max-width:900px){
+    .wrap{padding:0 24px;}
+    .age-grid{grid-template-columns:1fr; gap:22px; max-width:460px; margin:0 auto;}
+    .age-desc{min-height:0;}
+    .hero{padding:52px 0 44px;}
+    .intro br{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="/" aria-label="CIELPIA 홈"><img src="cielpia-logo.webp" alt="CIELPIA"></a>
+    <a class="back" href="/">← 프로그램 전체보기</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="age-pill">만3세 · 만4세 · 만5세</span>
+    <img class="hero-logo" src="cielpia-logo.webp" alt="CIELPIA" width="440" height="116">
+    <h1 class="tagline">실물 교구와 디지털 학습의 균형</h1>
+    <p class="intro">
+      씨엘피아는 몬테소리 교구 원칙과 누리과정을 연계한 프리미엄 영유아 프로그램입니다.<br>
+      각 연령별 발달과 개념 형성에 도움이 되는 맞춤형 교구로 구성되어 있습니다.
+    </p>
+  </div>
+</section>
+
+<section class="materials">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">몬테소리 교육 원리를 담은 연령별 맞춤 교구 구성</h2>
+      <p class="section-sub">연령별로 개념 형성에 도움이 되는 맞춤 교구로 구성했습니다.</p>
+    </div>
+
+    <div class="age-grid">
+
+      <article class="age-card c3">
+        <div class="age-head">만 3세</div>
+        <p class="age-desc">감각과 탐색을 통한<br>기초 개념 형성</p>
+        <div class="age-photo">
+          <img src="cielpia-age3.webp" alt="만 3세 교구 구성 - 감각 교구, 기초 수량, 기본 도형 교구">
+        </div>
+        <div class="tags">
+          <span class="tag">감각 교구</span>
+          <span class="tag">기초 수량</span>
+          <span class="tag">기본 도형</span>
+        </div>
+      </article>
+
+      <article class="age-card c4">
+        <div class="age-head">만 4세</div>
+        <p class="age-desc">구체적 조작을 통한<br>수 · 도형 개념 확장</p>
+        <div class="age-photo">
+          <img src="cielpia-age4.webp" alt="만 4세 교구 구성 - 수의 개념, 도형 인지, 분류와 비교 교구">
+        </div>
+        <div class="tags">
+          <span class="tag">수의 개념</span>
+          <span class="tag">도형 인지</span>
+          <span class="tag">분류와 비교</span>
+        </div>
+      </article>
+
+      <article class="age-card c5">
+        <div class="age-head">만 5세</div>
+        <p class="age-desc">추상적 사고와<br>문제 해결력 키우기</p>
+        <div class="age-photo">
+          <img src="cielpia-age5.webp" alt="만 5세 교구 구성 - 언어·수리, 창의사고, 사회·문화 이해 교구">
+        </div>
+        <div class="tags">
+          <span class="tag">언어 · 수리</span>
+          <span class="tag">창의사고</span>
+          <span class="tag">사회 · 문화 이해</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 CIELPIA. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
