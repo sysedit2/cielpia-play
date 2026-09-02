@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>탐험가 프로그램 | 피규어와 놀이로 배우는 생태 교육</title>
+<meta name="description" content="탐험가 프로그램은 실물과 흡사한 피규어와 놀이 활동을 결합한 생태 교육 프로그램입니다. 개구리부터 사슴벌레, 태양계까지 만 3세부터 5세까지 발달 과정에 맞춘 총 18가지 테마를 탐구합니다.">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<style>
+  :root{
+    --navy:#1c2b4a;
+    --ink:#22331f;
+    --green:#4f8a2e;
+    --green-deep:#3c6c22;
+    --olive:#8fb641;
+    --gray-600:#6b7684;
+    --gray-400:#9aa3b0;
+    --sand:#e7e0cd;
+    --sand-soft:#faf8f2;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+    color:var(--navy);
+    background:#fff;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    word-break:keep-all;
+  }
+  img{display:block; max-width:100%;}
+  a{text-decoration:none; color:inherit;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 48px;}
+
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    border-bottom:1px solid #eef0f4;
+    background:#fff;
+    position:sticky; top:0; z-index:20;
+  }
+  .topbar .wrap{
+    height:64px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .topbar img{height:34px; width:auto;}
+  .back{
+    font-size:14.5px; font-weight:600;
+    color:var(--gray-600);
+    padding:8px 14px; border-radius:999px;
+    transition:background .2s ease, color .2s ease;
+  }
+  .back:hover{background:#eef6e8; color:var(--green-deep);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:70px 0;
+    background-image:url('ex-forest.webp');
+    background-size:cover;
+    background-position:center;
+    background-color:#2d4a28;
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background:rgba(20,40,18,.18);
+  }
+  .hero .wrap{position:relative; z-index:2;}
+  .hero-card{
+    background:#fff;
+    border-radius:34px;
+    padding:48px 56px 52px;
+    max-width:880px; margin:0 auto;
+    text-align:center;
+    box-shadow:0 18px 48px rgba(10,30,10,.24);
+  }
+  .hero-logo{
+    width:min(300px,64vw); height:auto;
+    margin:0 auto 26px;
+  }
+  .hero-icons{
+    display:flex; justify-content:center; align-items:flex-end;
+    gap:46px; margin-bottom:26px;
+  }
+  .hero-icons img{height:56px; width:auto;}
+  .hero h1{
+    font-size:clamp(24px,3.2vw,36px);
+    font-weight:800;
+    line-height:1.4;
+    letter-spacing:-0.8px;
+    color:var(--ink);
+    margin-bottom:14px;
+  }
+  .hero-note{
+    font-size:clamp(14.5px,1.2vw,17px);
+    color:var(--gray-600);
+    line-height:1.7;
+  }
+  .hero-lead{
+    margin-top:26px;
+    padding-top:26px;
+    border-top:1px solid #eef0ec;
+    font-size:clamp(15px,1.25vw,17.5px);
+    line-height:1.9;
+    color:#4b5a63;
+    text-align:left;
+  }
+
+  /* ---------- VIDEO ---------- */
+  .video{padding:64px 0 8px;}
+  .video-frame{
+    max-width:920px; margin:0 auto;
+    aspect-ratio:16/9;
+    border-radius:20px; overflow:hidden;
+    background:#000;
+    box-shadow:0 10px 34px rgba(20,40,70,.14);
+  }
+  .video-frame iframe{display:block; width:100%; height:100%; border:0;}
+
+  /* ---------- SECTIONS ---------- */
+  section.block{padding:78px 0;}
+  .section-head{text-align:center; margin-bottom:44px;}
+  .section-title{
+    font-size:clamp(23px,2.6vw,32px);
+    font-weight:800;
+    letter-spacing:-0.6px;
+    margin-bottom:12px;
+  }
+  .section-title em{font-style:normal; color:var(--green);}
+  .section-sub{
+    font-size:clamp(15px,1.2vw,17px);
+    line-height:1.8; color:var(--gray-600);
+  }
+
+  /* ---------- PROGRAM COMPOSITION ---------- */
+  .kit-band{background:var(--sand-soft);}
+  .kit-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px; align-items:center;
+  }
+  .kit-photo{
+    background:var(--sand);
+    border-radius:26px;
+    padding:26px;
+  }
+  .kit-photo img{width:100%; height:auto; border-radius:12px;}
+  .feature{
+    display:flex; gap:22px; align-items:flex-start;
+    padding:22px 0;
+  }
+  .feature + .feature{border-top:1px solid #ebe7da;}
+  .feature img{width:54px; height:auto; flex:none; margin-top:2px;}
+  .feature h3{
+    font-size:21px; font-weight:800;
+    color:var(--green-deep);
+    margin-bottom:8px; letter-spacing:-0.3px;
+  }
+  .feature p{font-size:16px; line-height:1.65; color:var(--gray-600);}
+
+  /* ---------- THEMES ---------- */
+  .themes-figure{
+    max-width:1000px; margin:0 auto;
+    border-radius:24px; overflow:hidden;
+    box-shadow:0 8px 28px rgba(20,40,70,.12);
+  }
+  .themes-figure img{width:100%; height:auto;}
+
+  footer{
+    padding:28px 0 40px;
+    text-align:center;
+    color:var(--gray-400);
+    font-size:12.5px; font-weight:700;
+    border-top:1px solid #f1f3f6;
+  }
+
+  @media (max-width:900px){
+    .wrap{padding:0 24px;}
+    .hero{padding:44px 0;}
+    .hero-card{padding:36px 26px 40px; border-radius:26px;}
+    .hero-icons{gap:30px;}
+    .hero-icons img{height:44px;}
+    .kit-grid{grid-template-columns:1fr; gap:28px;}
+    section.block{padding:56px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="/" aria-label="탐험가 프로그램 홈"><img src="ex-logo.webp" alt="Fun Fun Explorer Program"></a>
+    <a class="back" href="/">← 프로그램 전체보기</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-card">
+      <img class="hero-logo" src="ex-logo.webp" alt="Fun Fun Explorer Program" width="640" height="265">
+      <div class="hero-icons">
+        <img src="ex-hicon1.webp" alt="" width="240" height="208">
+        <img src="ex-hicon2.webp" alt="" width="240" height="312">
+        <img src="ex-hicon3.webp" alt="" width="240" height="205">
+      </div>
+      <h1>미래 세대의 주인공인 우리 아이들에게<br>생태 감수성을 키워주세요.</h1>
+      <p class="hero-note">생명의 존엄성을 배우고 긍정적인 인성 발달을 도와주는 어린이 필수 교육입니다.</p>
+      <p class="hero-lead">
+        탐험가 프로그램은 실물과 흡사한 피규어와 놀이 활동을 결합한 생태 교육 프로그램입니다.
+        실제 모형을 손으로 직접 만지고, 북아트를 하며, 나만의 생태 도감을 스스로 완성해 가는
+        자기주도형 생태 탐험 패키지입니다. 탐험가 프로그램을 시작하시면 개구리부터 사슴벌레,
+        그리고 태양계까지, 만 3세부터 5세까지 발달 과정에 맞춘 총 18가지의 테마를
+        탐구해 보실 수 있습니다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="video">
+  <div class="wrap">
+    <div class="video-frame">
+      <iframe
+        src="https://player.vimeo.com/video/1223386481?h=719bed245d"
+        title="탐험가 프로그램 소개 영상"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="block kit-band">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Fun Fun Explorer Program <em>프로그램 구성</em></h2>
+    </div>
+    <div class="kit-grid">
+      <div class="kit-photo">
+        <img src="ex-kit.webp" alt="탐험가 프로그램 구성품 - 북아트 교재, 모형, 카드, 파우치" width="1364" height="703">
+      </div>
+      <div class="features">
+        <div class="feature">
+          <img src="ex-ficon1.webp" alt="" width="200" height="204">
+          <div>
+            <h3>생태교육</h3>
+            <p>설명지에 포함된 QR 코드를 스캔하시면 교육용 영상을 시청하실 수 있습니다.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <img src="ex-ficon2.webp" alt="" width="200" height="254">
+          <div>
+            <h3>성장과정</h3>
+            <p>실감 나는 모형을 활용하여 생물의 성장 과정을 탐구할 수 있습니다.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <img src="ex-ficon3.webp" alt="" width="200" height="258">
+          <div>
+            <h3>다양한 활동</h3>
+            <p>각 프로그램마다 다양하게 마련된 활동을 통해 여러 가지 체험을 할 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">개구리부터 태양계까지, <em>총 18가지 테마</em></h2>
+      <p class="section-sub">만 3세부터 5세까지 발달 과정에 맞춘 테마를 골고루 탐구합니다.</p>
+    </div>
+    <figure class="themes-figure">
+      <img src="ex-themes.webp" alt="개구리, 나비, 개미, 닭, 거북이, 문어, 꿀벌, 무당벌레, 모기, 사슴벌레, 연어, 강아지, 달팽이, 지렁이, 메뚜기, 거미, 악어 등 생물과 태양계 행성 테마" width="1536" height="1024">
+    </figure>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 CIELPIA. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
