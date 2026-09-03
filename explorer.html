@@ -97,14 +97,18 @@
     line-height:1.7;
   }
   .hero-lead{
-    margin-top:26px;
+    margin:26px auto 0;
     padding-top:26px;
     border-top:1px solid #eef0ec;
-    font-size:clamp(15px,1.25vw,17.5px);
+    max-width:740px;
+    font-size:clamp(15.5px,1.25vw,17px);
     line-height:1.9;
-    color:#4b5a63;
-    text-align:left;
+    color:#46565f;
+    text-align:center;
   }
+  /* one sentence per block, so the copy can be read in chunks */
+  .hero-lead p + p{margin-top:15px;}
+  .hero-lead .accent{color:var(--green-deep); font-weight:700;}
 
   /* ---------- VIDEO ---------- */
   .video{padding:64px 0 8px;}
@@ -180,6 +184,8 @@
     .hero-card{padding:36px 26px 40px; border-radius:26px;}
     .hero-icons{gap:30px;}
     .hero-icons img{height:44px;}
+    /* narrow screens wrap on their own; forced breaks would strand short lines */
+    .hero-lead br{display:none;}
     .kit-grid{grid-template-columns:1fr; gap:28px;}
     section.block{padding:56px 0;}
   }
@@ -205,13 +211,11 @@
       </div>
       <h1>미래 세대의 주인공인 우리 아이들에게<br>생태 감수성을 키워주세요.</h1>
       <p class="hero-note">생명의 존엄성을 배우고 긍정적인 인성 발달을 도와주는 어린이 필수 교육입니다.</p>
-      <p class="hero-lead">
-        탐험가 프로그램은 실물과 흡사한 피규어와 놀이 활동을 결합한 생태 교육 프로그램입니다.
-        실제 모형을 손으로 직접 만지고, 북아트를 하며, 나만의 생태 도감을 스스로 완성해 가는
-        자기주도형 생태 탐험 패키지입니다. 탐험가 프로그램을 시작하시면 개구리부터 사슴벌레,
-        그리고 태양계까지, 만 3세부터 5세까지 발달 과정에 맞춘 총 18가지의 테마를
-        탐구해 보실 수 있습니다.
-      </p>
+      <div class="hero-lead">
+        <p>탐험가 프로그램은 실물과 흡사한 피규어와 놀이 활동을 결합한 생태 교육 프로그램입니다.</p>
+        <p>실제 모형을 손으로 직접 만지고, 북아트를 하며,<br>나만의 생태 도감을 스스로 완성해 가는 자기주도형 생태 탐험 패키지입니다.</p>
+        <p>탐험가 프로그램을 시작하시면 개구리부터 사슴벌레, 그리고 태양계까지,<br>만 3세부터 5세까지 발달 과정에 맞춘 <span class="accent">총 18가지의 테마</span>를 탐구해 보실 수 있습니다.</p>
+      </div>
     </div>
   </div>
 </section>
