@@ -89,6 +89,9 @@
     max-width:760px;
     margin:0 auto;
   }
+  /* one sentence per block, so the copy can be read in chunks */
+  .intro p + p{margin-top:14px;}
+  .intro .accent{color:var(--purple); font-weight:700;}
 
   /* ---------- VIDEO ---------- */
   .video{padding:0 0 72px;}
@@ -213,10 +216,10 @@
     <span class="age-pill">만3세 · 만4세 · 만5세</span>
     <img class="hero-logo" src="cielpia-logo.webp" alt="CIELPIA" width="440" height="116">
     <h1 class="tagline">실물 교구와 디지털 학습의 균형</h1>
-    <p class="intro">
-      씨엘피아는 몬테소리 교구 원칙과 누리과정을 연계한 프리미엄 영유아 프로그램입니다.<br>
-      각 연령별 발달과 개념 형성에 도움이 되는 맞춤형 교구로 구성되어 있습니다.
-    </p>
+    <div class="intro">
+      <p>씨엘피아는 <span class="accent">몬테소리 교구 원칙과 누리과정</span>을 연계한 프리미엄 영유아 프로그램입니다.</p>
+      <p>각 연령별 발달과 개념 형성에 도움이 되는 맞춤형 교구로 구성되어 있습니다.</p>
+    </div>
   </div>
 </section>
 

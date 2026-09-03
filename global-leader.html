@@ -102,6 +102,9 @@
     line-height:1.9;
     color:var(--gray-600);
   }
+  /* one sentence per block, so the copy can be read in chunks */
+  .hero-lead p + p{margin-top:14px;}
+  .hero-lead .accent{color:var(--green-deep); font-weight:700;}
   .hero-visual img{
     width:100%; height:auto;
     filter:drop-shadow(0 14px 30px rgba(60,60,30,.16));
@@ -226,6 +229,8 @@
     .hero{padding:48px 0 52px;}
     .hero-inner{grid-template-columns:1fr; gap:32px;}
     .hero-visual{max-width:460px;}
+    /* narrow screens wrap on their own; forced breaks would strand short lines */
+    .hero-lead br{display:none;}
     .comp-grid{grid-template-columns:1fr;}
     section.block{padding:56px 0;}
   }
@@ -250,11 +255,11 @@
       <span class="age-pill">만3세 · 만4세 · 만5세</span>
       <h1><span class="k">Global</span> <span class="y">Leader</span>로<br>세계여행 출발!</h1>
       <p class="hero-sub">세계 문화 이해를 통한 국제 시민 교육 프로그램</p>
-      <p>
-        글로벌리더는 아이에게 세계를 심어주는 프로그램입니다.
-        아이들이 직접 입어보고, 만들어보며, 여권에 도장을 찍어보는 세계 여행 체험 패키지입니다.
-        아이들은 글로벌리더를 통해 전 세계 여러 나라를 골고루 깊이 있게 탐구해 보실 수 있습니다.
-      </p>
+      <div class="hero-lead">
+        <p>글로벌리더는 아이에게 세계를 심어주는 프로그램입니다.</p>
+        <p>아이들이 직접 입어보고, 만들어보며,<br>여권에 도장을 찍어보는 <span class="accent">세계 여행 체험 패키지</span>입니다.</p>
+        <p>아이들은 글로벌리더를 통해<br>전 세계 여러 나라를 골고루 깊이 있게 탐구해 보실 수 있습니다.</p>
+      </div>
     </div>
     <div class="hero-visual">
       <img src="gl-books.webp" alt="나라별 글로벌리더 교재 세트" width="900" height="692">

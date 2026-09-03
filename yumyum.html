@@ -104,6 +104,7 @@
     line-height:1.9;
     color:#5a4634;
   }
+  .hero-lead .accent{color:var(--orange-deep); font-weight:700;}
   .hero-logo img{width:100%; height:auto;}
 
   /* ---------- BOOKS ---------- */
@@ -161,6 +162,8 @@
     /* keep the halo inside .wrap's 24px padding so it can't overflow */
     .hero-copy::before{inset:-30px -20px -28px -20px;}
     .hero-inner{grid-template-columns:1fr; gap:28px;}
+    /* narrow screens wrap on their own; forced breaks would strand short lines */
+    .hero-lead br{display:none;}
     .hero-logo{max-width:360px;}
     .book-grid{gap:28px 20px; max-width:640px;}
     .book{flex:0 0 190px;}
@@ -190,9 +193,9 @@
       <span class="age-pill">만3세 · 만4세 · 만5세</span>
       <h1><b>얌얌</b>은 ‘음식’을 먹는 즐거움을<br>주제로 한 동화책 시리즈입니다.</h1>
       <p class="hero-lead">
-        얌얌 시리즈는 ‘음식을 먹는 즐거움’을 대주제로 만 3세부터 5세까지
-        각 성장 발달 과정의 식생활 고민을 건강하게 풀어나가는
-        정서 친화 동화책 프로그램입니다.
+        얌얌 시리즈는 ‘음식을 먹는 즐거움’을 대주제로<br>
+        만 3세부터 5세까지 각 성장 발달 과정의 식생활 고민을 건강하게 풀어나가는<br>
+        <span class="accent">정서 친화 동화책 프로그램</span>입니다.
       </p>
     </div>
     <div class="hero-logo">
