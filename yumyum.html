@@ -120,26 +120,30 @@
     font-size:clamp(15px,1.2vw,17px);
     line-height:1.8; color:var(--gray-600);
   }
+  /* flex (not grid) so the final short row stays centred */
   .book-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:34px;
-    max-width:900px; margin:0 auto;
+    display:flex; flex-wrap:wrap;
+    justify-content:center;
+    gap:36px 28px;
+    max-width:1120px; margin:0 auto;
   }
-  .book{text-align:center;}
+  .book{flex:0 0 244px; text-align:center;}
   .book-cover{
     display:flex; align-items:flex-end; justify-content:center;
-    margin-bottom:20px;
+    height:250px;
+    margin-bottom:16px;
   }
   .book-cover img{
-    width:100%; height:auto;
-    filter:drop-shadow(0 14px 24px rgba(90,58,34,.20));
+    max-width:100%; max-height:100%;
+    width:auto; height:auto;
+    filter:drop-shadow(0 12px 22px rgba(90,58,34,.20));
     transition:transform .25s ease;
   }
   .book:hover .book-cover img{transform:translateY(-6px);}
   .book h3{
-    font-size:19px; font-weight:800;
+    font-size:16.5px; font-weight:700;
     color:var(--ink);
+    line-height:1.45;
     letter-spacing:-0.3px;
   }
 
@@ -154,15 +158,20 @@
   @media (max-width:900px){
     .wrap{padding:0 24px;}
     .hero{padding:48px 0 150px;}
-    .hero-copy::before{inset:-30px -26px -28px -26px;}
+    /* keep the halo inside .wrap's 24px padding so it can't overflow */
+    .hero-copy::before{inset:-30px -20px -28px -20px;}
     .hero-inner{grid-template-columns:1fr; gap:28px;}
     .hero-logo{max-width:360px;}
-    .book-grid{gap:22px;}
-    .book h3{font-size:16px;}
+    .book-grid{gap:28px 20px; max-width:640px;}
+    .book{flex:0 0 190px;}
+    .book-cover{height:200px;}
+    .book h3{font-size:14.5px;}
     .books-band{padding:56px 0 70px;}
   }
   @media (max-width:560px){
-    .book-grid{grid-template-columns:1fr; max-width:300px;}
+    .book-grid{gap:24px 18px; max-width:360px;}
+    .book{flex:0 0 150px;}
+    .book-cover{height:180px;}
   }
 </style>
 </head>
@@ -196,24 +205,84 @@
   <div class="wrap">
     <div class="section-head">
       <h2 class="section-title">귀여운 캐릭터와 <em>따뜻한 이야기</em></h2>
-      <p class="section-sub">아이들이 음식과 식사 시간을 좋아하게 도와줍니다.</p>
+      <p class="section-sub">아이들이 음식과 식사 시간을 좋아하게 도와주는 13권의 이야기입니다.</p>
     </div>
     <div class="book-grid">
       <article class="book">
         <div class="book-cover">
-          <img src="ym-book1.webp" alt="동화책 표지 - 날 따라해봐요 치카치카" width="620" height="728">
+          <img src="ym-b01.webp" alt="동화책 표지 - 에취! 감기 조심" loading="lazy">
+        </div>
+        <h3>에취! 감기 조심</h3>
+      </article>
+      <article class="book">
+        <div class="book-cover">
+          <img src="ym-b02.webp" alt="동화책 표지 - 충치 NO 치카 YES" loading="lazy">
+        </div>
+        <h3>충치 NO 치카 YES</h3>
+      </article>
+      <article class="book">
+        <div class="book-cover">
+          <img src="ym-b03.webp" alt="동화책 표지 - 날 따라해봐요 치카치카" loading="lazy">
         </div>
         <h3>날 따라해봐요 치카치카</h3>
       </article>
       <article class="book">
         <div class="book-cover">
-          <img src="ym-book2.webp" alt="동화책 표지 - 다섯 친구들" width="620" height="725">
+          <img src="ym-b04.webp" alt="동화책 표지 - 뉴와 친구들의 편식 탈출" loading="lazy">
+        </div>
+        <h3>뉴와 친구들의 편식 탈출</h3>
+      </article>
+      <article class="book">
+        <div class="book-cover">
+          <img src="ym-b05.webp" alt="동화책 표지 - 다섯 친구들" loading="lazy">
         </div>
         <h3>다섯 친구들</h3>
       </article>
       <article class="book">
         <div class="book-cover">
-          <img src="ym-book3.webp" alt="동화책 표지 - 건강한 음식이 최고야!" width="620" height="741">
+          <img src="ym-b06.webp" alt="동화책 표지 - 티니의 단백질 모험" loading="lazy">
+        </div>
+        <h3>티니의 단백질 모험</h3>
+      </article>
+      <article class="book">
+        <div class="book-cover">
+          <img src="ym-b07.webp" alt="동화책 표지 - 꼭꼭 냠냠 쏙쏙" loading="lazy">
+        </div>
+        <h3>꼭꼭 냠냠 쏙쏙</h3>
+      </article>
+      <article class="book">
+        <div class="book-cover">
+          <img src="ym-b08.webp" alt="동화책 표지 - 비타민 요정들" loading="lazy">
+        </div>
+        <h3>비타민 요정들</h3>
+      </article>
+      <article class="book">
+        <div class="book-cover">
+          <img src="ym-b09.webp" alt="동화책 표지 - 우리 패트가 달라졌어요" loading="lazy">
+        </div>
+        <h3>우리 패트가 달라졌어요</h3>
+      </article>
+      <article class="book">
+        <div class="book-cover">
+          <img src="ym-b10.webp" alt="동화책 표지 - 탄수화물 에너지 충전" loading="lazy">
+        </div>
+        <h3>탄수화물 에너지 충전</h3>
+      </article>
+      <article class="book">
+        <div class="book-cover">
+          <img src="ym-b11.webp" alt="동화책 표지 - 뼈튼튼 키쑥쑥" loading="lazy">
+        </div>
+        <h3>뼈튼튼 키쑥쑥</h3>
+      </article>
+      <article class="book">
+        <div class="book-cover">
+          <img src="ym-b12.webp" alt="동화책 표지 - 맛있는 봄 친구들" loading="lazy">
+        </div>
+        <h3>맛있는 봄 친구들</h3>
+      </article>
+      <article class="book">
+        <div class="book-cover">
+          <img src="ym-b13.webp" alt="동화책 표지 - 건강한 음식이 최고야!" loading="lazy">
         </div>
         <h3>건강한 음식이 최고야!</h3>
       </article>
