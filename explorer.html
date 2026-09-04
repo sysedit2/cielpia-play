@@ -170,6 +170,56 @@
   }
   .themes-figure img{width:100%; height:auto;}
 
+  /* ---------- YEARLY THEME CURRICULUM ---------- */
+  .theme-summary{
+    text-align:center;
+    margin:34px 0 26px;
+    font-size:clamp(15px,1.2vw,17px);
+    color:var(--gray-600);
+  }
+  .theme-summary b{color:var(--green-deep); font-weight:800;}
+  .curr-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    max-width:1000px; margin:0 auto;
+  }
+  .curr{
+    border:1px solid #e9edf2;
+    border-radius:18px;
+    padding:20px 22px 22px;
+    background:#fff;
+    box-shadow:0 3px 12px rgba(20,40,70,.04);
+  }
+  .curr-head{
+    display:flex; align-items:center; gap:10px;
+    padding-bottom:14px; margin-bottom:14px;
+    border-bottom:1px solid #f0f2ee;
+  }
+  .curr-name{font-size:18px; font-weight:800; letter-spacing:-0.3px;}
+  .curr-count{
+    font-size:12.5px; font-weight:800;
+    padding:4px 11px; border-radius:999px;
+  }
+  .curr-list{list-style:none; display:flex; flex-direction:column; gap:9px;}
+  .curr-list li{
+    display:flex; align-items:center; gap:11px;
+    font-size:15.5px; font-weight:700;
+    letter-spacing:-0.3px; color:#31414a;
+  }
+  .curr-list .mon{
+    flex:none; width:44px; text-align:center;
+    font-size:12.5px; font-weight:800;
+    padding:4px 0; border-radius:8px;
+    background:#f3f6f0; color:#6f7d68;
+  }
+  .a3 .curr-name{color:#6d8f2b;}
+  .a3 .curr-count{background:var(--olive); color:#2f4415;}
+  .a4 .curr-name{color:var(--green);}
+  .a4 .curr-count{background:var(--green); color:#fff;}
+  .a5 .curr-name{color:var(--green-deep);}
+  .a5 .curr-count{background:var(--green-deep); color:#fff;}
+
   footer{
     padding:28px 0 40px;
     text-align:center;
@@ -187,7 +237,12 @@
     /* narrow screens wrap on their own; forced breaks would strand short lines */
     .hero-lead br{display:none;}
     .kit-grid{grid-template-columns:1fr; gap:28px;}
+    .curr-grid{grid-template-columns:1fr; max-width:420px; gap:16px;}
     section.block{padding:56px 0;}
+  }
+  @media (min-width:901px) and (max-width:1040px){
+    .curr-list li{font-size:14.5px; gap:8px;}
+    .curr{padding:18px 16px 20px;}
   }
 </style>
 </head>
@@ -278,6 +333,44 @@
     <figure class="themes-figure">
       <img src="ex-themes.webp" alt="개구리, 나비, 개미, 닭, 거북이, 문어, 꿀벌, 무당벌레, 모기, 사슴벌레, 연어, 강아지, 달팽이, 지렁이, 메뚜기, 거미, 악어 등 생물과 태양계 행성 테마" width="1536" height="1024">
     </figure>
+
+    <p class="theme-summary"><b>3개 연령 · 18가지 테마</b>를 두 달에 한 번씩, 한 해 동안 여섯 가지 주제로 탐구합니다.</p>
+
+    <div class="curr-grid">
+      <div class="curr a3">
+        <div class="curr-head"><span class="curr-name">만 3세</span><span class="curr-count">6가지</span></div>
+        <ul class="curr-list">
+          <li><span class="mon">3월</span>개구리</li>
+          <li><span class="mon">5월</span>나비</li>
+          <li><span class="mon">7월</span>개미</li>
+          <li><span class="mon">9월</span>닭</li>
+          <li><span class="mon">11월</span>거북이</li>
+          <li><span class="mon">1월</span>문어</li>
+        </ul>
+      </div>
+      <div class="curr a4">
+        <div class="curr-head"><span class="curr-name">만 4세</span><span class="curr-count">6가지</span></div>
+        <ul class="curr-list">
+          <li><span class="mon">3월</span>뱀</li>
+          <li><span class="mon">5월</span>무당벌레</li>
+          <li><span class="mon">7월</span>모기</li>
+          <li><span class="mon">9월</span>사슴벌레</li>
+          <li><span class="mon">11월</span>연어</li>
+          <li><span class="mon">1월</span>개</li>
+        </ul>
+      </div>
+      <div class="curr a5">
+        <div class="curr-head"><span class="curr-name">만 5세</span><span class="curr-count">6가지</span></div>
+        <ul class="curr-list">
+          <li><span class="mon">3월</span>달팽이</li>
+          <li><span class="mon">5월</span>지렁이</li>
+          <li><span class="mon">7월</span>메뚜기</li>
+          <li><span class="mon">9월</span>거미</li>
+          <li><span class="mon">11월</span>악어</li>
+          <li><span class="mon">1월</span>태양계</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
