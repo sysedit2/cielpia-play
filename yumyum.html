@@ -121,32 +121,62 @@
     font-size:clamp(15px,1.2vw,17px);
     line-height:1.8; color:var(--gray-600);
   }
-  /* flex (not grid) so the final short row stays centred */
-  .book-grid{
-    display:flex; flex-wrap:wrap;
-    justify-content:center;
-    gap:36px 28px;
+  /* ---------- AGE BANDS ---------- */
+  .age-band{
+    border-radius:26px;
+    border:1px solid;
+    padding:26px 26px 30px;
     max-width:1120px; margin:0 auto;
   }
-  .book{flex:0 0 244px; text-align:center;}
+  .age-band + .age-band{margin-top:24px;}
+  .band-head{
+    display:flex; align-items:center; justify-content:center;
+    gap:10px; margin-bottom:24px;
+  }
+  .age-chip{
+    font-size:19px; font-weight:800; color:#fff;
+    letter-spacing:-0.3px;
+    padding:8px 22px; border-radius:999px;
+  }
+  .band-count{
+    font-size:13px; font-weight:800;
+    padding:5px 12px; border-radius:999px;
+  }
+  /* exactly six per band, so a fixed track count stays even */
+  .book-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:22px 16px;
+  }
+  .book{text-align:center;}
   .book-cover{
     display:flex; align-items:flex-end; justify-content:center;
-    height:250px;
-    margin-bottom:16px;
+    height:180px;
+    margin-bottom:13px;
   }
   .book-cover img{
     max-width:100%; max-height:100%;
     width:auto; height:auto;
-    filter:drop-shadow(0 12px 22px rgba(90,58,34,.20));
+    filter:drop-shadow(0 10px 18px rgba(90,58,34,.20));
     transition:transform .25s ease;
   }
   .book:hover .book-cover img{transform:translateY(-6px);}
   .book h3{
-    font-size:16.5px; font-weight:700;
+    font-size:14px; font-weight:700;
     color:var(--ink);
     line-height:1.45;
     letter-spacing:-0.3px;
   }
+
+  .a3{background:rgba(232,149,42,.07); border-color:rgba(232,149,42,.28);}
+  .a3 .age-chip{background:#e8952a;}
+  .a3 .band-count{background:rgba(232,149,42,.18); color:#8f5405;}
+  .a4{background:rgba(217,106,21,.06); border-color:rgba(217,106,21,.26);}
+  .a4 .age-chip{background:#d96a15;}
+  .a4 .band-count{background:rgba(217,106,21,.15); color:#8f4109;}
+  .a5{background:rgba(184,80,12,.05); border-color:rgba(184,80,12,.24);}
+  .a5 .age-chip{background:#b8500c;}
+  .a5 .band-count{background:rgba(184,80,12,.13); color:#843807;}
 
   footer{
     padding:28px 0 40px;
@@ -165,16 +195,15 @@
     /* narrow screens wrap on their own; forced breaks would strand short lines */
     .hero-lead br{display:none;}
     .hero-logo{max-width:360px;}
-    .book-grid{gap:28px 20px; max-width:640px;}
-    .book{flex:0 0 190px;}
-    .book-cover{height:200px;}
-    .book h3{font-size:14.5px;}
+    .age-band{padding:22px 18px 26px; border-radius:20px;}
+    .book-grid{grid-template-columns:repeat(3,1fr); gap:22px 16px;}
+    .book-cover{height:165px;}
     .books-band{padding:56px 0 70px;}
   }
   @media (max-width:560px){
-    .book-grid{gap:24px 18px; max-width:360px;}
-    .book{flex:0 0 150px;}
-    .book-cover{height:180px;}
+    .book-grid{grid-template-columns:repeat(2,1fr); gap:22px 14px;}
+    .book-cover{height:170px;}
+    .book h3{font-size:13.5px;}
   }
 </style>
 </head>
@@ -208,118 +237,140 @@
   <div class="wrap">
     <div class="section-head">
       <h2 class="section-title">귀여운 캐릭터와 <em>따뜻한 이야기</em></h2>
-      <p class="section-sub">아이들이 음식과 식사 시간을 좋아하게 도와주는 18권의 이야기입니다.</p>
+      <p class="section-sub">연령별 6권씩, 아이들이 음식과 식사 시간을 좋아하게 도와주는 18권의 이야기입니다.</p>
     </div>
-    <div class="book-grid">
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b01.webp" alt="동화책 표지 - 에취! 감기 조심" loading="lazy">
+      <section class="age-band a3">
+        <div class="band-head">
+          <span class="age-chip">만 3세</span>
+          <span class="band-count">6권</span>
         </div>
-        <h3>에취! 감기 조심</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b02.webp" alt="동화책 표지 - 충치 NO 치카 YES" loading="lazy">
+        <div class="book-grid">
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b03.webp" alt="동화책 표지 - 날 따라해봐요 치카치카" loading="lazy">
+          </div>
+          <h3>날 따라해봐요 치카치카</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b12.webp" alt="동화책 표지 - 맛있는 봄 친구들" loading="lazy">
+          </div>
+          <h3>맛있는 봄 친구들</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b05.webp" alt="동화책 표지 - 다섯 친구들" loading="lazy">
+          </div>
+          <h3>다섯 친구들</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b10.webp" alt="동화책 표지 - 탄수화물 에너지 충전" loading="lazy">
+          </div>
+          <h3>탄수화물 에너지 충전</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b07.webp" alt="동화책 표지 - 꼭꼭 냠냠 쏙쏙" loading="lazy">
+          </div>
+          <h3>꼭꼭 냠냠 쏙쏙</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b01.webp" alt="동화책 표지 - 에취! 감기 조심" loading="lazy">
+          </div>
+          <h3>에취! 감기 조심</h3>
+        </article>
         </div>
-        <h3>충치 NO 치카 YES</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b03.webp" alt="동화책 표지 - 날 따라해봐요 치카치카" loading="lazy">
+      </section>
+      <section class="age-band a4">
+        <div class="band-head">
+          <span class="age-chip">만 4세</span>
+          <span class="band-count">6권</span>
         </div>
-        <h3>날 따라해봐요 치카치카</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b04.webp" alt="동화책 표지 - 뉴와 친구들의 편식 탈출" loading="lazy">
+        <div class="book-grid">
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b02.webp" alt="동화책 표지 - 충치 NO 치카 YES" loading="lazy">
+          </div>
+          <h3>충치 NO 치카 YES</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b06.webp" alt="동화책 표지 - 티니의 단백질 모험" loading="lazy">
+          </div>
+          <h3>티니의 단백질 모험</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b09.webp" alt="동화책 표지 - 우리 패트가 달라졌어요" loading="lazy">
+          </div>
+          <h3>우리 패트가 달라졌어요</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b14.webp" alt="동화책 표지 - 쿵덕쿵덕 떡방아" loading="lazy">
+          </div>
+          <h3>쿵덕쿵덕 떡방아</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b15.webp" alt="동화책 표지 - 나는 김치야" loading="lazy">
+          </div>
+          <h3>나는 김치야</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b17.webp" alt="동화책 표지 - 맛있는 연구실" loading="lazy">
+          </div>
+          <h3>맛있는 연구실</h3>
+        </article>
         </div>
-        <h3>뉴와 친구들의 편식 탈출</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b05.webp" alt="동화책 표지 - 다섯 친구들" loading="lazy">
+      </section>
+      <section class="age-band a5">
+        <div class="band-head">
+          <span class="age-chip">만 5세</span>
+          <span class="band-count">6권</span>
         </div>
-        <h3>다섯 친구들</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b06.webp" alt="동화책 표지 - 티니의 단백질 모험" loading="lazy">
+        <div class="book-grid">
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b04.webp" alt="동화책 표지 - 뉴와 친구들의 편식 탈출" loading="lazy">
+          </div>
+          <h3>뉴와 친구들의 편식 탈출</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b08.webp" alt="동화책 표지 - 비타민 요정들" loading="lazy">
+          </div>
+          <h3>비타민 요정들</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b11.webp" alt="동화책 표지 - 뼈튼튼 키쑥쑥" loading="lazy">
+          </div>
+          <h3>뼈튼튼 키쑥쑥</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b13.webp" alt="동화책 표지 - 건강한 음식이 최고야!" loading="lazy">
+          </div>
+          <h3>건강한 음식이 최고야!</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b16.webp" alt="동화책 표지 - 뉴와 전통 간식 친구들" loading="lazy">
+          </div>
+          <h3>뉴와 전통 간식 친구들</h3>
+        </article>
+        <article class="book">
+          <div class="book-cover">
+            <img src="ym-b18.webp" alt="동화책 표지 - 우리나라 발효식품 맛있는 삼총사 간장, 된장, 고추장" loading="lazy">
+          </div>
+          <h3>맛있는 삼총사<br>간장, 된장, 고추장</h3>
+        </article>
         </div>
-        <h3>티니의 단백질 모험</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b07.webp" alt="동화책 표지 - 꼭꼭 냠냠 쏙쏙" loading="lazy">
-        </div>
-        <h3>꼭꼭 냠냠 쏙쏙</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b08.webp" alt="동화책 표지 - 비타민 요정들" loading="lazy">
-        </div>
-        <h3>비타민 요정들</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b09.webp" alt="동화책 표지 - 우리 패트가 달라졌어요" loading="lazy">
-        </div>
-        <h3>우리 패트가 달라졌어요</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b10.webp" alt="동화책 표지 - 탄수화물 에너지 충전" loading="lazy">
-        </div>
-        <h3>탄수화물 에너지 충전</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b11.webp" alt="동화책 표지 - 뼈튼튼 키쑥쑥" loading="lazy">
-        </div>
-        <h3>뼈튼튼 키쑥쑥</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b12.webp" alt="동화책 표지 - 맛있는 봄 친구들" loading="lazy">
-        </div>
-        <h3>맛있는 봄 친구들</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b13.webp" alt="동화책 표지 - 건강한 음식이 최고야!" loading="lazy">
-        </div>
-        <h3>건강한 음식이 최고야!</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b14.webp" alt="동화책 표지 - 쿵덕쿵덕 떡방아" loading="lazy">
-        </div>
-        <h3>쿵덕쿵덕 떡방아</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b15.webp" alt="동화책 표지 - 나는 김치야" loading="lazy">
-        </div>
-        <h3>나는 김치야</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b16.webp" alt="동화책 표지 - 뉴와 전통 간식 친구들" loading="lazy">
-        </div>
-        <h3>뉴와 전통 간식 친구들</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b17.webp" alt="동화책 표지 - 맛있는 연구실" loading="lazy">
-        </div>
-        <h3>맛있는 연구실</h3>
-      </article>
-      <article class="book">
-        <div class="book-cover">
-          <img src="ym-b18.webp" alt="동화책 표지 - 우리나라 발효식품 맛있는 삼총사 간장, 된장, 고추장" loading="lazy">
-        </div>
-        <h3>맛있는 삼총사<br>간장, 된장, 고추장</h3>
-      </article>
-    </div>
+      </section>
   </div>
 </section>
 
