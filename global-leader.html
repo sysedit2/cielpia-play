@@ -218,6 +218,7 @@
     border-radius:22px; overflow:hidden;
     box-shadow:0 8px 28px rgba(20,40,70,.10);
   }
+  .map-figure picture{display:block;}
   .map-figure img{width:100%; height:auto;}
 
   /* ---------- COUNTRIES BY CONTINENT ---------- */
@@ -374,7 +375,12 @@
   <div class="wrap">
     <h2 class="sr-only">어떤 나라를 탐구할까? 전 세계 대륙의 다양한 나라를 골고루 탐구해볼 수 있어요.</h2>
     <figure class="map-figure">
-      <img src="gl-map.webp" alt="어떤 나라를 탐구할까? 유럽 7개국(독일·러시아·스위스·스페인·영국·이탈리아·헝가리), 아시아 9개국(대한민국·몽골·인도·인도네시아·일본·중국·튀르키예·파키스탄·필리핀), 아프리카 2개국(나이지리아·이집트), 오세아니아 2개국(뉴질랜드·호주), 북아메리카 2개국(미국·멕시코), 남아메리카 2개국(브라질·페루)을 표시한 세계 지도" width="2240" height="1260">
+      <picture>
+        <!-- art direction: portrait layouts for narrow screens -->
+        <source media="(max-width:400px)" srcset="gl-map-sm.webp" width="900" height="1944">
+        <source media="(max-width:840px)" srcset="gl-map-mo.webp" width="1200" height="2592">
+        <img src="gl-map.webp" alt="어떤 나라를 탐구할까? 유럽 7개국(독일·러시아·스위스·스페인·영국·이탈리아·헝가리), 아시아 9개국(대한민국·몽골·인도·인도네시아·일본·중국·튀르키예·파키스탄·필리핀), 아프리카 2개국(나이지리아·이집트), 오세아니아 2개국(뉴질랜드·호주), 북아메리카 2개국(미국·멕시코), 남아메리카 2개국(브라질·페루)을 표시한 세계 지도" width="2240" height="1260">
+      </picture>
     </figure>
   </div>
 </section>
