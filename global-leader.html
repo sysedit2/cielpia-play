@@ -221,46 +221,6 @@
   .map-figure img{width:100%; height:auto;}
 
   /* ---------- COUNTRIES BY CONTINENT ---------- */
-  .map-summary{
-    text-align:center;
-    margin:34px 0 26px;
-    font-size:clamp(15px,1.2vw,17px);
-    color:var(--gray-600);
-  }
-  .map-summary b{color:var(--green-deep); font-weight:800;}
-  .country-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-    max-width:1120px; margin:0 auto;
-  }
-  .cont{
-    border:1px solid #e9edf2;
-    border-radius:18px;
-    padding:20px 22px 22px;
-    background:#fff;
-    box-shadow:0 3px 12px rgba(20,40,70,.04);
-  }
-  .cont-head{
-    display:flex; align-items:center; gap:10px;
-    margin-bottom:14px;
-  }
-  .cont-name{font-size:18px; font-weight:800; letter-spacing:-0.3px;}
-  .cont-count{
-    font-size:12.5px; font-weight:800;
-    padding:4px 11px; border-radius:999px;
-  }
-  .cont-list{display:flex; flex-wrap:wrap; gap:7px;}
-  .cont-list span{
-    font-size:14px; font-weight:600;
-    padding:5px 11px; border-radius:999px;
-    background:#f4f6f9; color:#4a5763;
-  }
-  .c-green .cont-name{color:var(--green-deep);}
-  .c-green .cont-count{background:var(--green); color:#fff;}
-  .c-amber .cont-name{color:#a67c00;}
-  .c-amber .cont-count{background:var(--yellow); color:#4a3600;}
-
   footer{
     padding:28px 0 40px;
     text-align:center;
@@ -281,13 +241,11 @@
     /* narrow screens wrap on their own; forced breaks would strand short lines */
     .hero-lead br{display:none;}
     .comp-grid{grid-template-columns:1fr;}
-    .country-grid{grid-template-columns:repeat(2,1fr); gap:16px;}
     section.block{padding:56px 0;}
   }
   @media (max-width:560px){
     .exp-grid{grid-template-columns:1fr; max-width:400px; margin:0 auto;}
     .comp{flex-direction:column; text-align:center; gap:14px;}
-    .country-grid{grid-template-columns:1fr; max-width:400px;}
   }
 </style>
 </head>
@@ -416,56 +374,8 @@
   <div class="wrap">
     <h2 class="sr-only">어떤 나라를 탐구할까? 전 세계 대륙의 다양한 나라를 골고루 탐구해볼 수 있어요.</h2>
     <figure class="map-figure">
-      <img src="gl-map.webp" alt="유럽, 아시아, 아프리카, 오세아니아, 북아메리카, 남아메리카 등 전 세계 대륙을 탐구하는 세계 지도" width="1376" height="728">
+      <img src="gl-map.webp" alt="어떤 나라를 탐구할까? 유럽 7개국(독일·러시아·스위스·스페인·영국·이탈리아·헝가리), 아시아 9개국(대한민국·몽골·인도·인도네시아·일본·중국·튀르키예·파키스탄·필리핀), 아프리카 2개국(나이지리아·이집트), 오세아니아 2개국(뉴질랜드·호주), 북아메리카 2개국(미국·멕시코), 남아메리카 2개국(브라질·페루)을 표시한 세계 지도" width="2240" height="1260">
     </figure>
-
-    <p class="map-summary"><b>6개 대륙 · 24개국</b>을 대륙별로 나누어 탐구합니다.</p>
-
-    <div class="country-grid">
-      <div class="cont c-green">
-        <div class="cont-head"><span class="cont-name">유럽</span><span class="cont-count">7개국</span></div>
-        <div class="cont-list">
-          <span>독일</span><span>러시아</span><span>스위스</span><span>스페인</span>
-          <span>영국</span><span>이탈리아</span><span>헝가리</span>
-        </div>
-      </div>
-
-      <div class="cont c-amber">
-        <div class="cont-head"><span class="cont-name">아시아</span><span class="cont-count">9개국</span></div>
-        <div class="cont-list">
-          <span>대한민국</span><span>몽골</span><span>인도</span><span>인도네시아</span><span>일본</span>
-          <span>중국</span><span>튀르키예</span><span>파키스탄</span><span>필리핀</span>
-        </div>
-      </div>
-
-      <div class="cont c-green">
-        <div class="cont-head"><span class="cont-name">아프리카</span><span class="cont-count">2개국</span></div>
-        <div class="cont-list">
-          <span>나이지리아</span><span>이집트</span>
-        </div>
-      </div>
-
-      <div class="cont c-amber">
-        <div class="cont-head"><span class="cont-name">오세아니아</span><span class="cont-count">2개국</span></div>
-        <div class="cont-list">
-          <span>뉴질랜드</span><span>호주</span>
-        </div>
-      </div>
-
-      <div class="cont c-green">
-        <div class="cont-head"><span class="cont-name">북아메리카</span><span class="cont-count">2개국</span></div>
-        <div class="cont-list">
-          <span>미국</span><span>멕시코</span>
-        </div>
-      </div>
-
-      <div class="cont c-green">
-        <div class="cont-head"><span class="cont-name">남아메리카</span><span class="cont-count">2개국</span></div>
-        <div class="cont-list">
-          <span>브라질</span><span>페루</span>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
