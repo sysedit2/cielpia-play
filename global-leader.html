@@ -89,8 +89,16 @@
     color:var(--green);
     margin-bottom:14px;
   }
-  .hero h1 .y{color:var(--yellow);}
-  .hero h1 .k{color:var(--green);}
+  /* brand CI replaces the words "Global Leader" in the headline */
+  .hero h1 .gl-line{display:block; line-height:1; margin-bottom:12px;}
+  .gl-mark{
+    display:inline-block;
+    height:2.4em;
+    width:auto;
+    /* the wordmark's baseline sits 42/260 above the file's bottom edge */
+    vertical-align:-0.388em;
+    margin-right:.02em;
+  }
   .hero-sub{
     font-size:clamp(16px,1.5vw,19px);
     font-weight:700;
@@ -296,7 +304,7 @@
   <div class="wrap hero-inner">
     <div class="hero-copy">
       <span class="age-pill">만3세 · 만4세 · 만5세</span>
-      <h1><span class="k">Global</span> <span class="y">Leader</span>로<br>세계여행 출발!</h1>
+      <h1><span class="gl-line"><img class="gl-mark" src="gl-logo.webp" alt="Global Leader" width="560" height="260">로</span>세계여행 출발!</h1>
       <p class="hero-sub">세계 문화 이해를 통한 국제 시민 교육 프로그램</p>
       <div class="hero-lead">
         <p>글로벌리더는 아이에게 세계를 심어주는 프로그램입니다.</p>
