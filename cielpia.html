@@ -156,15 +156,33 @@
     color:var(--navy);
     min-height:96px;
   }
-  .age-photo{
+  /* material mosaic: one tile per real 교구 photo */
+  .mat-grid{
     flex:1;
-    display:flex; align-items:center; justify-content:center;
-    padding:10px 18px 4px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    padding:14px 18px 6px;
   }
-  .age-photo img{
+  .mat{
+    display:flex; flex-direction:column;
+    border-radius:16px;
+    padding:12px 10px 11px;
+    text-align:center;
+    transition:transform .22s ease;
+  }
+  .mat:hover{transform:translateY(-3px);}
+  .mat img{
     width:100%;
     aspect-ratio:1/1;
+    height:auto;
     object-fit:contain;
+  }
+  .mat span{
+    margin-top:auto;
+    padding-top:9px;
+    font-size:15px; font-weight:700;
+    line-height:1.4; letter-spacing:-0.3px;
   }
   .tags{
     display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
@@ -179,10 +197,16 @@
 
   .c3 .age-head{background:var(--age3);}
   .c3 .tag{background:rgba(0,180,141,.10); color:#04815f;}
+  .c3 .mat{background:rgba(0,180,141,.09);}
+  .c3 .mat span{color:#04815f;}
   .c4 .age-head{background:var(--age4);}
   .c4 .tag{background:rgba(95,194,254,.14); color:#1f79b8;}
+  .c4 .mat{background:rgba(95,194,254,.11);}
+  .c4 .mat span{color:#1f79b8;}
   .c5 .age-head{background:var(--age5);}
   .c5 .tag{background:rgba(251,125,108,.13); color:#cf4b39;}
+  .c5 .mat{background:rgba(251,125,108,.09);}
+  .c5 .mat span{color:#cf4b39;}
 
   footer{
     padding:28px 0 40px;
@@ -197,6 +221,7 @@
     .wrap{padding:0 24px;}
     .age-grid{grid-template-columns:1fr; gap:22px; max-width:460px; margin:0 auto;}
     .age-desc{min-height:0;}
+    .mat-grid{gap:14px; padding:16px 18px 6px;}
     .hero{padding:52px 0 44px;}
     .intro br{display:none;}
   }
@@ -248,8 +273,31 @@
       <article class="age-card c3">
         <div class="age-head">만 3세</div>
         <p class="age-desc">감각과 탐색을 통한<br>기초 개념 형성</p>
-        <div class="age-photo">
-          <img src="cielpia-age3.webp" alt="만 3세 교구 구성 - 감각 교구, 기초 수량, 기본 도형 교구">
+        <div class="mat-grid">
+          <figure class="mat">
+            <img src="cielpia-m3-1.webp" alt="만 3세 교구 - 분홍탑" loading="lazy" width="560" height="560">
+            <span>분홍탑</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m3-2.webp" alt="만 3세 교구 - 갈색 계단" loading="lazy" width="560" height="560">
+            <span>갈색 계단</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m3-3.webp" alt="만 3세 교구 - 꼭지 원기둥" loading="lazy" width="560" height="560">
+            <span>꼭지 원기둥</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m3-4.webp" alt="만 3세 교구 - 기본 색판" loading="lazy" width="560" height="560">
+            <span>기본 색판</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m3-5.webp" alt="만 3세 교구 - 빨강 · 파랑 수막대" loading="lazy" width="560" height="560">
+            <span>빨강 · 파랑 수막대</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m3-6.webp" alt="만 3세 교구 - 사포 숫자판" loading="lazy" width="560" height="560">
+            <span>사포 숫자판</span>
+          </figure>
         </div>
         <div class="tags">
           <span class="tag">감각 교구</span>
@@ -261,8 +309,31 @@
       <article class="age-card c4">
         <div class="age-head">만 4세</div>
         <p class="age-desc">구체적 조작을 통한<br>수 · 도형 개념 확장</p>
-        <div class="age-photo">
-          <img src="cielpia-age4.webp" alt="만 4세 교구 구성 - 수의 개념, 도형 인지, 분류와 비교 교구">
+        <div class="mat-grid">
+          <figure class="mat">
+            <img src="cielpia-m4-1.webp" alt="만 4세 교구 - 기하 입체와 도형 카드" loading="lazy" width="560" height="560">
+            <span>기하 입체와 도형 카드</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m4-2.webp" alt="만 4세 교구 - 산가지 상자" loading="lazy" width="560" height="560">
+            <span>산가지 상자</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m4-3.webp" alt="만 4세 교구 - 색구슬 계단" loading="lazy" width="560" height="560">
+            <span>색구슬 계단</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m4-4.webp" alt="만 4세 교구 - 색판 그러데이션" loading="lazy" width="560" height="560">
+            <span>색판 그러데이션</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m4-5.webp" alt="만 4세 교구 - 도형 끼우기 판" loading="lazy" width="560" height="560">
+            <span>도형 끼우기 판</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m4-6.webp" alt="만 4세 교구 - 수량 칩과 숫자" loading="lazy" width="560" height="560">
+            <span>수량 칩과 숫자</span>
+          </figure>
         </div>
         <div class="tags">
           <span class="tag">수의 개념</span>
@@ -274,8 +345,31 @@
       <article class="age-card c5">
         <div class="age-head">만 5세</div>
         <p class="age-desc">추상적 사고와<br>문제 해결력 키우기</p>
-        <div class="age-photo">
-          <img src="cielpia-age5.webp" alt="만 5세 교구 구성 - 언어·수리, 창의사고, 사회·문화 이해 교구">
+        <div class="mat-grid">
+          <figure class="mat">
+            <img src="cielpia-m5-1.webp" alt="만 5세 교구 - 우표 놀이" loading="lazy" width="560" height="560">
+            <span>우표 놀이</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m5-2.webp" alt="만 5세 교구 - 한글 자음 · 모음" loading="lazy" width="560" height="560">
+            <span>한글 자음 · 모음</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m5-3.webp" alt="만 5세 교구 - 100 숫자판" loading="lazy" width="560" height="560">
+            <span>100 숫자판</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m5-4.webp" alt="만 5세 교구 - 지구본" loading="lazy" width="560" height="560">
+            <span>지구본</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m5-5.webp" alt="만 5세 교구 - 시계 교구" loading="lazy" width="560" height="560">
+            <span>시계 교구</span>
+          </figure>
+          <figure class="mat">
+            <img src="cielpia-m5-6.webp" alt="만 5세 교구 - 큰 숫자 카드" loading="lazy" width="560" height="560">
+            <span>큰 숫자 카드</span>
+          </figure>
         </div>
         <div class="tags">
           <span class="tag">언어 · 수리</span>
